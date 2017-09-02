@@ -4,7 +4,8 @@
   "description": "Experimental boilerplate for future React applications",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base src/ --progress --colors"
+    "start": "webpack-dev-server --content-base src/ --progress --colors",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [
     "react",
@@ -21,6 +22,7 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.8",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
