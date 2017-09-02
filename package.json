@@ -21,6 +21,7 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.8",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
