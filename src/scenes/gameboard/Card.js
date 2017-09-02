@@ -26,7 +26,7 @@ const Card = ({card}) => (
 );
 
 Card.propTypes = {
-  card: PropTypes.shape.isRequired
+  card: PropTypes.shape({}).isRequired
 };
 
 export default Card;
