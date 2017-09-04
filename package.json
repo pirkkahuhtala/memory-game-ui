@@ -19,6 +19,7 @@
     "url": "https://github.com/pirkkahuhtala/react-boilerplate"
   },
   "dependencies": {
+    "material-ui": "^0.19.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -48,6 +49,7 @@
     "jest": "^20.0.4",
     "path": "^0.12.7",
     "prettier-eslint": "^6.4.3",
+    "storybook-addon-material-ui": "^0.8.0",
     "react-test-renderer": "^15.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
