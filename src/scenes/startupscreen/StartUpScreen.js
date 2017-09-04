@@ -10,7 +10,7 @@ const MainMenuContainer = styled.div`
 const Container = styled.div`
     display: flex; 
     flex-direction: column;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 400px);
     justify-content: center;
     align-items: center;
 `;

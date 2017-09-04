@@ -35,6 +35,10 @@ module.exports = {
       {
         test: /\.stories.js$/,
         loader: 'ignore-loader'
+      },
+      { 
+        test: /\.css$/, 
+        loader: "style-loader!css-loader" 
       }
     ]
   },
