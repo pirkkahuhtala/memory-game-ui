@@ -1,4 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-ReactDOM.render (<h1>It works</h1>, document.getElementById ('root'));
+import './styles.css';
+import Layout from './components/layout/';
+
+ReactDOM.render (
+  <MuiThemeProvider><Layout /></MuiThemeProvider>,
+  document.getElementById ('root')
+);
