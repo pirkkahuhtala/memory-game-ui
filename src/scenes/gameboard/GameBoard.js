@@ -25,7 +25,11 @@ const GameBoard = ({cards}) => (
 );
 
 GameBoard.propTypes = {
-  cards: PropTypes.arrayOf (PropTypes.shape).isRequired
+  cards: PropTypes.arrayOf (PropTypes.shape)
+};
+
+GameBoard.defaultProps = {
+  cards: []
 };
 
 export default GameBoard;
