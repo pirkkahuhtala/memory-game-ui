@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import CardType from '../../data/card/Card';
+import CardType from './types';
 
 const Value = styled.text`
-  display: ${props => (props.card.isTurnedAround ? 'block' : 'none')};
+  display: ${props =>
+    props.card.isTurnedAround || props.card.isResolved ? 'block' : 'none'};
   font-size: 2rem;
 `;
 
@@ -38,13 +38,13 @@ const resolveBorderColor = card => {
 const CardContainer = styled.div`
   background: #ffffff;
   border-style: solid;
-  border-width: 0.1rem;
+  border-width: 0.05rem;
   border-radius: 1rem;
   border-color: ${({ card }) => resolveBorderColor(card)};
   display: block;
   height: 6rem;
   line-height: 6rem;
-  padding: 0.4rem;
+  padding: 0.5rem;
   text-align: center;
   width: 4rem;
 `;
@@ -61,10 +61,5 @@ const Card = ({ card, onClick }: Props) => (
     </ValueWrapper>
   </CardContainer>
 );
-
-Card.propTypes = {
-  card: PropTypes.shape({}).isRequired,
-  onClick: PropTypes.func
-};
 
 export default Card;

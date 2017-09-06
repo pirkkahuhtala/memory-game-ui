@@ -23,6 +23,7 @@
     ],
     "rules": {
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        "no-underscore-dangle": ["off"],
         "no-const-assign": "warn",
         "no-this-before-super": "warn",
         "no-undef": "warn",
@@ -30,10 +31,13 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
+        "comma-dangle": ["error", {
+            "arrays": "never",
+            "objects": "only-multiline",
+            "imports": "never",
+            "exports": "never",
+            "functions": "ignore"
+        }],
         "jsx-a11y/href-no-hash": "off",
         "jsx-a11y/img-has-alt": [
             0

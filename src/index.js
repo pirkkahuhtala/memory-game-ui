@@ -1,21 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {BrowserRouter, Route} from 'react-router-dom';
-
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createLogicMiddleware } from 'redux-logic';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import App from './app';
+import game from './features/game/reducer';
+import gameLogic from './features/game/logic';
 import './styles.css';
-import Layout from './components/layout';
-import StartUpScreen from './scenes/startupscreen';
-import GameBoard from './scenes/gameboard';
 
-ReactDOM.render (
+const logicMiddleware = createLogicMiddleware([...gameLogic]);
+const store = createStore(
+  combineReducers({ game }),
+  composeWithDevTools(applyMiddleware(logicMiddleware))
+);
+
+ReactDOM.render(
   <MuiThemeProvider>
-    <BrowserRouter>
-      <Layout>
-        <Route exact path="/" component={StartUpScreen} />
-        <Route path="/game" component={GameBoard} />
-      </Layout>
-    </BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </MuiThemeProvider>,
-  document.getElementById ('root')
+  document.getElementById('root')
 );
