@@ -6,7 +6,6 @@ import type Card from './types';
 const CardWrapper = styled.div`padding: 1rem;`;
 
 const Board = styled.div`
-  background: #cfcfcf;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
