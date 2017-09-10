@@ -3,9 +3,16 @@ import React from 'react';
 import styled from 'styled-components';
 import CardType from './types';
 
-const Back = styled.text`font-size: 2rem;`;
+const resolveBorderColor = card => {
+  if (card.isResolved) {
+    return '#98FB98';
+  } else if (card.isTurnedAround) {
+    return '#000000';
+  }
+  return '#ffffff';
+};
 
-const Front = styled.div`
+const CardGraphic = styled.div`
   background: #36c;
   background: linear-gradient(
         115deg,
@@ -23,16 +30,7 @@ const Front = styled.div`
   border-radius: 1rem;
 `;
 
-const resolveBorderColor = card => {
-  if (card.isResolved) {
-    return '#98FB98';
-  } else if (card.isTurnedAround) {
-    return '#000000';
-  }
-  return '#ffffff';
-};
-
-const CardContainer = styled.div`
+const Side = styled.div`
   background: #ffffff;
   backface-visibility: hidden;
   border-style: solid;
@@ -49,21 +47,23 @@ const CardContainer = styled.div`
   width: 4rem;
 `;
 
-const FrontContainer = CardContainer.extend`
+const Front = Side.extend`
+  font-size: 2rem;
+  transform: rotateY(180deg);
+`;
+const Back = Side.extend`
   transform: rotateY(0deg);
   z-index: 1;
 `;
-const BackContainer = CardContainer.extend`transform: rotateY(180deg);`;
 
 const Flipper = styled.div`
-  ${({ card }) =>
-    card.isTurnedAround || card.isResolved ? 'transform: rotateY(180deg)' : ''};
+  ${({ flipped }) => (flipped ? 'transform: rotateY(180deg)' : '')};
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
 `;
 
-const StyledDiv = styled.div`
+const CardContainer = styled.div`
   height: 7rem;
   perspective: 1000px;
   width: 5rem;
@@ -75,16 +75,16 @@ type Props = {
 };
 
 const Card = ({ card, onClick }: Props) => (
-  <StyledDiv>
-    <Flipper card={card}>
-      <FrontContainer card={card} onClick={onClick}>
-        <Front card={card} />
-      </FrontContainer>
-      <BackContainer card={card} onClick={onClick}>
-        <Back card={card}>{card.value}</Back>
-      </BackContainer>
+  <CardContainer>
+    <Flipper flipped={card.isTurnedAround || card.isResolved}>
+      <Front card={card} onClick={onClick}>
+        {card.value}
+      </Front>
+      <Back card={card} onClick={onClick}>
+        <CardGraphic />
+      </Back>
     </Flipper>
-  </StyledDiv>
+  </CardContainer>
 );
 
 export default Card;
